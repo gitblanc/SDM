@@ -41,12 +41,29 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
     <Button
-        android:id="@+id/buttonFinish"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonCancelled"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Finish"
+        android:text="RESULT_CANCELLED"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCheckbox" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/buttonOk"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="RESULT_OK"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancelled"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCheckbox" />
 </androidx.constraintlayout.widget.ConstraintLayout>

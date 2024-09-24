@@ -1,8 +1,6 @@
 package com.example.constraintlayout
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -15,7 +13,8 @@ import com.example.constraintlayout.MainActivity.Companion.CLAVE_NOMBRE
 
 class DetallesActivity : AppCompatActivity() {
 
-    private lateinit var buttonFinish : Button
+    private lateinit var buttonCancelled : Button
+    private lateinit var buttonOk : Button
     private lateinit var textViewName : TextView
     private lateinit var textViewEmail : TextView
     private lateinit var textViewCheckbox : TextView
@@ -33,13 +32,25 @@ class DetallesActivity : AppCompatActivity() {
         textViewName = findViewById(R.id.textViewName)
         textViewEmail = findViewById(R.id.textViewEmail)
         textViewCheckbox = findViewById(R.id.textViewCheckbox)
-        buttonFinish = findViewById(R.id.buttonFinish)
+        buttonCancelled = findViewById(R.id.buttonCancelled)
+        buttonOk = findViewById(R.id.buttonOk)
 
         textViewName.setText(intent.getStringExtra(CLAVE_NOMBRE))
         textViewEmail.setText(intent.getStringExtra(CLAVE_EMAIL))
         textViewCheckbox.setText(intent.getStringExtra(CLAVE_CHECKBOX))
 
-        buttonFinish.setOnClickListener(){ _ ->
+
+        //launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ resultado ->
+        //    procesarResultado(resultado)
+        //}
+
+        buttonOk.setOnClickListener(){ _ ->
+            intent.putExtra("resultado", "PATATISIMAMENTE ACEPTADO")
+            setResult(RESULT_OK, intent)
+            finish()
+        }
+        buttonCancelled.setOnClickListener(){ _ ->
+            setResult(RESULT_CANCELED, intent)
             finish()
         }
     }

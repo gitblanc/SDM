@@ -7,7 +7,11 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editTextEmail: EditText
     private lateinit var checkbox : CheckBox
     private lateinit var buttonEnviar : Button
+    private lateinit var textViewAceptado : TextView
 
     companion object
     {
@@ -26,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         const val CLAVE_EMAIL : String = "email"
         const val CLAVE_CHECKBOX : String = "checkboxVal"
     }
+
+    private lateinit var launcher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         editTextEmail = findViewById(R.id.editTextEmail)
         checkbox = findViewById(R.id.checkBox)
         buttonEnviar = findViewById(R.id.buttonEnviar)
+        textViewAceptado = findViewById(R.id.textViewAceptado)
 
         buttonEnviar.setOnClickListener(){ _ ->
             //Toast.makeText(this, "Botón pulsado", Toast.LENGTH_SHORT).show()
@@ -67,8 +75,23 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra(CLAVE_NOMBRE, nombre)
                 intent.putExtra(CLAVE_CHECKBOX, checkbox.isChecked.toString())
 
-                startActivity(intent)
+                launcher.launch(intent)
+                //startActivity(intent)
             }
         }
+
+        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ resultado ->
+            procesarResultado(resultado)
+        }
+    }
+
+    private fun procesarResultado(resultado: ActivityResult) {
+        if(resultado.resultCode == RESULT_OK) {
+            Toast.makeText(this, "¡Se aceptó!", Toast.LENGTH_SHORT).show()
+            val text = resultado.data?.getStringExtra("resultado")
+            textViewAceptado.setText(text)
+        }
+        else
+            Toast.makeText(this, "¡Se canceló!", Toast.LENGTH_SHORT).show()
     }
 }
