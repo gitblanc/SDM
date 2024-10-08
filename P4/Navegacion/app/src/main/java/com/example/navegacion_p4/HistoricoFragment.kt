@@ -17,13 +17,6 @@ class HistoricoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        btnHistorico = requireView().findViewById(R.id.btnHistorico)
-        editTextHistorico = requireView().findViewById(R.id.editTextHistorico)
-
-        btnHistorico.setOnClickListener() { _ ->
-            val destino = HistoricoFragmentDirections.actionHistoricoFragmentToDetallesFragment("a")
-            findNavController().navigate(destino)
-        }
     }
 
     override fun onCreateView(
@@ -32,5 +25,16 @@ class HistoricoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_historico, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnHistorico = requireView().findViewById(R.id.btnHistorico)
+        editTextHistorico = requireView().findViewById(R.id.editTextHistorico)
+        btnHistorico.setOnClickListener() { _ ->
+            val destino = HistoricoFragmentDirections.actionHistoricoFragmentToDetallesFragment("a")
+            findNavController().navigate(destino)
+        }
     }
 }
