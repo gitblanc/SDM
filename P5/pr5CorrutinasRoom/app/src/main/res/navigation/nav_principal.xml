@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_principal"
+    app:startDestination="@id/contactosMainFragment">
+
+    <fragment
+        android:id="@+id/contactosMainFragment"
+        android:name="com.example.pr5corrutinasroom.ContactosMainFragment"
+        android:label="fragment_contactos_main"
+        tools:layout="@layout/fragment_contactos_main" >
+        <action
+            android:id="@+id/action_contactosMainFragment_to_contactoDetalles"
+            app:destination="@id/contactoDetallesFragment" />
+        <action
+            android:id="@+id/action_contactosMainFragment_to_contactoNuevoFragment"
+            app:destination="@id/contactoNuevoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactoDetallesFragment"
+        android:name="com.example.pr5corrutinasroom.ContactoDetallesFragment"
+        android:label="fragment_contacto_detalles"
+        tools:layout="@layout/fragment_contacto_detalles" >
+        <argument
+            android:name="contacto"
+            app:argType="com.example.pr5corrutinasroom.Contacto" />
+        <action
+            android:id="@+id/action_contactoDetallesFragment_to_contactoEditarFragment"
+            app:destination="@id/contactoEditarFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactoNuevoFragment"
+        android:name="com.example.pr5corrutinasroom.ContactoNuevoFragment"
+        android:label="fragment_contacto_nuevo"
+        tools:layout="@layout/fragment_contacto_nuevo" />
+    <fragment
+        android:id="@+id/contactoEditarFragment"
+        android:name="com.example.pr5corrutinasroom.ContactoEditarFragment"
+        android:label="fragment_contacto_editar"
+        tools:layout="@layout/fragment_contacto_editar" >
+        <argument
+            android:name="contacto"
+            app:argType="com.example.pr5corrutinasroom.Contacto" />
+    </fragment>
+    <fragment
+        android:id="@+id/mensajesMainFragment"
+        android:name="com.example.pr5corrutinasroom.MensajesMainFragment"
+        android:label="fragment_mensajes_main"
+        tools:layout="@layout/fragment_mensajes_main" />
+
+</navigation>
