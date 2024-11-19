@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacion"
+    app:startDestination="@id/topPeliculasFragment">
+    <fragment
+        android:id="@+id/topPeliculasFragment"
+        android:name="com.example.pr10integracion.presentacion.TopPeliculasFragment"
+        android:label="fragment_top_peliculas"
+        tools:layout="@layout/fragment_top_peliculas" >
+        <action
+            android:id="@+id/action_topPeliculasFragment_to_detallesPeliculaFragment"
+            app:destination="@id/detallesPeliculaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/busquedaPeliculasFragment"
+        android:name="com.example.pr10integracion.presentacion.BusquedaPeliculasFragment"
+        android:label="fragment_busqueda_peliculas"
+        tools:layout="@layout/fragment_busqueda_peliculas" >
+        <action
+            android:id="@+id/action_busquedaPeliculasFragment_to_detallesPeliculaFragment"
+            app:destination="@id/detallesPeliculaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritasPeliculasFragment"
+        android:name="com.example.pr10integracion.presentacion.FavoritasPeliculasFragment"
+        android:label="fragment_favoritas_peliculas"
+        tools:layout="@layout/fragment_favoritas_peliculas" >
+        <action
+            android:id="@+id/action_favoritasPeliculasFragment_to_detallesPeliculaFragment"
+            app:destination="@id/detallesPeliculaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detallesPeliculaFragment"
+        android:name="com.example.pr10integracion.presentacion.DetallesPeliculaFragment"
+        android:label="fragment_detalles_pelicula"
+        tools:layout="@layout/fragment_detalles_pelicula" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+</navigation>
