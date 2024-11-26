@@ -1,0 +1,13 @@
+class MainActivityViewModelProviderFactory(
+    private val preferenciasDataStore: PreferenciasDataStore
+): ViewModelProvider.Factory
+{
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MainActivityViewModel(preferenciasDataStore) as T
+    }
+}
+
+class MainActivityViewModel(private val preferenciasDataStore: PreferenciasDataStore) : ViewModel() {
+
+
+}

@@ -1,0 +1,8 @@
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
+    name = "prefs_pr11"
+)
+
+class PreferenciasDataStore(private val dataStore: DataStore<Preferences>) {
+
+   
+}
